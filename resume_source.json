@@ -1,0 +1,105 @@
+{
+    "title": {
+        "text": {
+          "headline": "\"Unless someone like you cares a whole awful lot,\nNothing is going to get better. It's not.\" <a href='https://www.goodreads.com/quotes/4907-unless-someone-like-you-cares-a-whole-awful-lot-nothing'>- Dr. Seuss, The Lorax</a>"
+        }
+    },
+    "events": [
+      {
+        "media": {
+          "url": "https://github.com/laxmarshall9/Streamlit_apps/blob/main/UCR_Logo.png?raw=true",
+          "caption": "",
+          "credit": "<a href='https://websites.ucr.edu/image/ucr-logo'>Logo</a> by University of California, Riverside</a>"
+        },
+        "start_date": {
+          "month": "10",
+          "year": "2015"
+        },
+        "end_date": {
+          "month": "6",
+          "year": "2019"
+        },
+        "text": {
+          "headline": "Bachelor of Science",
+          "text": "<p>Business Administration & Management. Notable courses taken: Production & Operations Management, Competitive & Strategic Analysis, Leadership Development, Advanced Topics: Management & Decision-Making, Decision Analysis & Management Science, Marketing & Distribution Management, Management Writing & Communication, Information Technology Management, Financial Evaluation & Managerial Analysis, Negotiation Fundamentals, Law & Economics</p>"
+        }
+      },
+      {
+        "media": {
+          "url": "https://github.com/laxmarshall9/Streamlit_apps/blob/main/Kite_Pharma_logo.jpg?raw=true",
+          "caption": "",
+          "credit": "<a href='https://commons.wikimedia.org/wiki/File:NEW_KITE_COLOR_LOGO.jpg'>Logo</a> by Kite Public Affairs team/<a href='https://creativecommons.org/licenses/by-sa/4.0/'>CC BY-SA 4.0</a>"
+        },
+        "start_date": {
+          "month": "6",
+          "day": "18",
+          "year": "2018"
+        },
+        "end_date": {
+          "month": "9",
+          "day": "12",
+          "year": "2018"
+        },
+        "text": {
+          "headline": "Summer Internship",
+          "text": "<p>My introduction to supply chain began at the Santa Monica headquarters of Kite Pharma. I served as a project manager in the external manufacturing branch of supply chain and was tasked with researching prospective CMOs, documenting 'Rules & Operations' between Kite Pharma and its existing CMOs, and assisting with administrative duties. I commuted 3-4 hours every day, five days a week, and learned that being in supply chain often means becoming a lifelong learner of various disciplines. I was surrounded by extremely competent high performers who were driven by a clear sense of purpose. My time here was short but I will never forget it.</p>"
+        }
+      },
+      {
+        "media": {
+          "url": "https://github.com/laxmarshall9/Streamlit_apps/blob/main/Avid_Bioservices_logo.png?raw=true",
+          "caption": "",
+          "credit": "<a href='https://companieslogo.com/img/orig/CDMO_BIG-7b0b5541.png?t=1720244491'>Logo</a> by Avid Bioservices, Inc. on companieslogo.com</a>"
+        },
+        "start_date": {
+          "month": "8",
+          "year": "2019"
+        },
+        "end_date": {
+          "month": "1",
+          "year": "2021"
+        },
+        "text": {
+          "headline": "Supply Chain Clerk",
+          "text": "<p>This role created a key nucleation point for the starting foundation of my supply chain knowledge to grow. This was a warehouse job which introduced me to a wide range of functions across departments and specialities. I delivered materials to manufacturing and other departments, controlled inventory via transactions and cycle counts, completed hazardous waste documentation and labeling, assisted our receiving team, responded to overnight emergency callouts for equipment alarms, and got my first exposure to inventory planning by managing our replenishment inventory locations and supply of compressed gases.</p>"
+        }
+      },
+      {
+        "media": {
+          "url": "https://github.com/laxmarshall9/Streamlit_apps/blob/main/Avid_Bioservices_logo.png?raw=true",
+          "caption": "",
+          "credit": "<a href='https://companieslogo.com/img/orig/CDMO_BIG-7b0b5541.png?t=1720244491'>Logo</a> by Avid Bioservices, Inc. on companieslogo.com</a>"
+        },
+        "start_date": {
+          "month": "1",
+          "year": "2021"
+        },
+        "end_date": {
+          "month": "11",
+          "year": "2021"
+        },
+        "text": {
+          "headline": "Supply Chain Analyst",
+          "text": "<p>From displaying an ability to learn quickly and take initiative to find creative solutions to problems, I was promoted into this role to support the technology transfer of our AX Dynamics 2012 ERP system into Microsoft D365, serving as a lead supply chain SME and super user backing-up our supply chain director. In this role, I transfered existing processes, pioneered the exploration of MRP I & II systems, and dove into data reporting including an expansion into PowerBI software. In continued support of floor operations, I assisted management's implementation of 5S practices, designed a process for inbound/outbound logistics between Avid & 3PL warehouse, created a procedure for the operation and safe-use of a new walk-in freezer, and continued to support the inventory, logistics, and receiving teams ad-hoc.</p>"
+        }
+      },
+      {
+        "media": {
+          "url": "https://github.com/laxmarshall9/Streamlit_apps/blob/main/SK_pharmteco_Logo_Large.png?raw=true",
+          "caption": "",
+          "credit": "<a href='https://www.businesswire.com/news/home/20230920062293/en/SK-pharmteco-to-Expand-Capabilities-with-Acquisition-of-Controlling-Interest-in-Center-for-Breakthrough-Medicines.'>Logo</a> by SK Pharmteco Inc. on businesswire.com</a>"
+        },
+        "start_date": {
+          "month": "12",
+          "year": "2021"
+        },
+        "end_date": {
+          "year": "2025"
+        },
+        "text": {
+          "headline": "E2E Business Unit Planner I & II",
+          "text": "<p>From Avid, I was recruited to join a startup company, formerly known as The Center for Breakthrough Medicines, now SK Pharmteco. This role greatly expanded upon many prior skills translatable from my roles at Avid Bioservices and challenged my creativity in building technological solutions. This role has stress-tested my time-management skills, sparked a new passion for technology, & required me to thrive under high pressure even if the odds are stacked against me. My most notable contributions include pioneering MRP I & II systems in SAP, creation of a custom web application (similar in nature to to this application) which generates highly advanced materials-related insights, and the completion of multiple miscellaneuous projects each yielding multi-million dollar ROIs for the company. I plan materials, buy materials, program supply chain solutions, facilitate meetings with clients/partners, and fill gaps which require an end-to-end expertise in supply chain.</p>"
+        }
+      }
+    ]
+}
