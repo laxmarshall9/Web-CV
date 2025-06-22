@@ -2,5 +2,5 @@ gotrue==2.12.0
 plotly==5.18.0
 postgrest==1.1.0
 streamlit==1.42.0
-streamlit_timeline==0.0.2
-supabase==2.15.3
+streamlit_timeline
+supabase
