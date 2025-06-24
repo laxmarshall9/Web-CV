@@ -421,7 +421,7 @@ def intro_tab_function() -> None:
         # streamlit.markdown(apply_time_duration_formating_for_job_roles(two_years_two_months_before,date_in_past))
 
     with tab3:
-        tab3_container1: DeltaGenerator = streamlit.container()
+        tab3_container1: DeltaGenerator = streamlit.container(border=False)
         tab3_container1.subheader(":primary[University of California, Riverside]", anchor=False)
         tab3_container1.markdown(f":blue[{r"$\textsf{ Bachelor of Science, Business Administration \& Management}$"}]")
         tab3_container1.markdown("- Earned Distinctions: :blue[**Dean's Honor List & Chancellor's Honor List**]")
@@ -441,7 +441,7 @@ def intro_tab_function() -> None:
         """)
 
     with tab4:
-        tab4_container1: DeltaGenerator = streamlit.container()
+        tab4_container1: DeltaGenerator = streamlit.container(border=False)
         tab4_container1.subheader(":primary[APICS: Certified Supply Chain Professional (CSCP)]", anchor=False)
         tab4_container1.markdown("""
         - *ID: :blue[APICS2439201]*
