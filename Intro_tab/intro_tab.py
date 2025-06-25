@@ -227,9 +227,9 @@ def intro_tab_function() -> None:
         
         - *Supply chain lead for new product introductions (NPIs).*\n
                                                 
-        - *Coordinates end to end supply chain activities among stakeholders.*\n
+        - *Coordinates end to end supply chain activities among stakeholders across various departments.*\n
         
-        - *Responsible for forecasting, planning, buying, and expediting materials.*\n
+        - *Responsible for for proactively forecasting, planning, buying, and expediting materials.*\n
                                                 
         - *Maintains accurate MRP inputs (BOM/BOO/forecast) & mitigates or
         escalates risks when identified.*\n
@@ -238,6 +238,8 @@ def intro_tab_function() -> None:
         decisions, prepare for negotiations, or assess scenarios.*\n
                                                 
         - *Facilitates materials readiness meetings with leadership & clients.*\n
+                                          
+        - *Contributes and owns Change Controls in Veeva Quality Management System (QMS) as needed*.\n
                                                 
         - *Autonomously pursues process improvements and integration of data across software platforms.*\n
                                           
@@ -270,9 +272,9 @@ def intro_tab_function() -> None:
         skpt_planner_1_container.markdown("""
         - *Supply chain lead for new product introductions (NPIs).*\n
                                                 
-        - *Coordinates end to end supply chain activities among stakeholders.*\n
+        - *Coordinates end to end supply chain activities among stakeholders across various departments.*\n
         
-        - *Responsible for forecasting, planning, buying, and expediting materials.*\n
+        - *Responsible for for proactively forecasting, planning, buying, and expediting materials.*\n
                                                 
         - *Maintains accurate MRP inputs (BOM/BOO/forecast) & mitigates or
         escalates risks when identified.*\n
