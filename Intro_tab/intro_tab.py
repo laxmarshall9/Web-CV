@@ -423,10 +423,14 @@ def intro_tab_function() -> None:
         # streamlit.markdown(apply_time_duration_formating_for_job_roles(two_years_two_months_before,date_in_past))
 
     with tab3:
+        University_start: datetime.date = datetime.date(2015,10,1)
+        University_end: datetime.date = datetime.date(2019,6,30)
+        
         tab3_container1: DeltaGenerator = streamlit.container(border=False)
         tab3_container1.subheader(":primary[University of California, Riverside]", anchor=False)
         tab3_container1.markdown(f":blue[{r"$\textsf{ Bachelor of Science, Business Administration \& Management}$"}]")
-        tab3_container1.markdown("- Earned Distinctions: :blue[**Dean's Honor List & Chancellor's Honor List**]")
+        tab3_container1.markdown(f":blue[*{apply_time_duration_formating_for_job_roles(University_start, University_end)}*]")
+        tab3_container1.markdown("- Earned Distinctions: :primary[**Dean's Honor List & Chancellor's Honor List**]")
         tab3_container1.markdown("""
         - **Notable courses taken:**\n
             - *Production & Operations Management*
