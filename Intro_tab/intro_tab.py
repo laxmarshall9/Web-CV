@@ -225,41 +225,28 @@ def intro_tab_function() -> None:
         skpt_planner_2_container.markdown(apply_time_duration_formating_for_job_roles(skpt_planner_2_start, skpt_planner_2_end))
         skpt_planner_2_container.markdown("""
         
-        - *Supply chain lead for new product introductions (NPIs).*\n
-                                                
-        - *Coordinates end to end supply chain activities among stakeholders across various departments.*\n
-        
-        - *Responsible for for proactively forecasting, planning, buying, and expediting materials.*\n
-                                                
+        - *Supply chain lead for new product introductions (NPIs).*
+        - *Coordinates end to end supply chain activities among stakeholders across various departments.*
+        - *Responsible for for proactively forecasting, planning, buying, and expediting materials.*
         - *Maintains accurate MRP inputs (BOM/BOO/forecast) & mitigates or
-        escalates risks when identified.*\n
-                                                
+        escalates risks when identified.*
         - *Conducts complex data analysis to identify bottlenecks, inform
-        decisions, prepare for negotiations, or assess scenarios.*\n
-                                                
-        - *Facilitates materials readiness meetings with leadership & clients.*\n
-                                          
-        - *Contributes and owns Change Controls in Veeva Quality Management System (QMS) as needed*.\n
-                                                
-        - *Autonomously pursues process improvements and integration of data across software platforms.*\n
-                                          
-        - *Owns and/or contributes to change controls in Veeva quality management system as needed.*\n
-                                          
+        decisions, prepare for negotiations, or assess scenarios.*
+        - *Facilitates materials readiness meetings with leadership & clients.*
+        - *Contributes and owns Change Controls in Veeva Quality Management System (QMS) as needed*.
+        - *Autonomously pursues process improvements and integration of data across software platforms.*
+        - *Owns and/or contributes to change controls in Veeva quality management system as needed.*
         - *Built a web application using python-code dedicated to providing advanced
         data insights and analytics for materials planning. These analytics support: 
         buy-decisions, risk assessments, adjustments to stock-level and reorder point settings, materials-related investigations,
-        historical lead time trends, identification of alternate materials, verifications of master data integrity, and more.*\n
-                                                
-        - *Iterated a self-built material planning tool which further-reduced focus-hours to plan from 26 to 14.5 hours per planner per week.*\n                                           
-
+        historical lead time trends, identification of alternate materials, verifications of master data integrity, and more.*
+        - *Iterated a self-built material planning tool which further-reduced focus-hours to plan from 26 to 14.5 hours per planner per week.*
         - *Built a template for automating and standardizing
         status-updates on materials readiness, enabling near real-time report-outs and reducing
-        manual preparations by roughly 2 hours per materials readiness meeting per week.*\n
-                                          
+        manual preparations by roughly 2 hours per materials readiness meeting per week.*
         - *Miscellaneous accomplishments: (1) received a spotlight award for dedication to clients; (2) idenitified $1.7M of SLOB
         inventory for disposition; (3) further-automated manual routine activites via python-code to perform
         automated data-refreshes and mass-analytics by SKU which support both high-level materials oversight and SKU-level evaluations.*
-                                                
                                                 
         """)
 
@@ -270,40 +257,28 @@ def intro_tab_function() -> None:
         skpt_planner_1_container.subheader(":primary[SK Pharmteco] - *E2E Business Unit Planner I*", anchor=False)
         skpt_planner_1_container.markdown(apply_time_duration_formating_for_job_roles(skpt_planner_1_start, skpt_planner_1_end))
         skpt_planner_1_container.markdown("""
-        - *Supply chain lead for new product introductions (NPIs).*\n
-                                                
-        - *Coordinates end to end supply chain activities among stakeholders across various departments.*\n
-        
-        - *Responsible for for proactively forecasting, planning, buying, and expediting materials.*\n
-                                                
+        - *Supply chain lead for new product introductions (NPIs).*
+        - *Coordinates end to end supply chain activities among stakeholders across various departments.*
+        - *Responsible for for proactively forecasting, planning, buying, and expediting materials.*
         - *Maintains accurate MRP inputs (BOM/BOO/forecast) & mitigates or
-        escalates risks when identified.*\n
-                                                
+        escalates risks when identified.*
         - *Conducts complex data analysis to identify bottlenecks, inform
-        decisions, prepare for negotiations, or assess scenarios.*\n
-                                                
-        - *Facilitates materials readiness meetings with leadership & clients.*\n
-                                                
-        - *Autonomously pursues process improvements and integration of data across software platforms.*\n
-                                                
+        decisions, prepare for negotiations, or assess scenarios.*
+        - *Facilitates materials readiness meetings with leadership & clients.*
+        - *Autonomously pursues process improvements and integration of data across software platforms.*
         - *Created a refreshable reporting template which utilizes algorithms via
         advanced excel functions. Iterations have led to immense increases to
-        efficiency in hours required to plan and report on materials.*\n
-                                                
+        efficiency in hours required to plan and report on materials.*
         - *Was a pioneering lead and pivotal systems architect for SAP
         implementation of CPFR systems which provided MRP I & II capabilities
         enabling production orders, real-time materials consumption,
-        cost-estimation on projected materials usage, and visibility to WIP inventory & COGS.*\n
-                                          
-        - *Created a materials planning template which reduced focus-hours to plan from 111 to 32 hours per planner per week.*\n
-                                                
+        cost-estimation on projected materials usage, and visibility to WIP inventory & COGS.*
+        - *Created a materials planning template which reduced focus-hours to plan from 111 to 32 hours per planner per week.*
         - *Created headcount metrics for the SC planning team by defining job
         responsibilities and validating data inputs by tracking live activities. This 
-        data supported leadership's decision to create 3 new positions.*\n
-                                          
+        data supported leadership's decision to create 3 new positions.*
         - *Reduced planned materials orders by $8.9M, representing a 60% reduction to planned materials-orders by identifying
-        excess requirements.*\n
-                                                
+        excess requirements.*
         - *Miscellaneous contributions: (1) the numbering method of in-house
         made SKUs; (2) identified the need (and requested) for two new NDAs/CDAs; (3) identified $1.2M of SLOB inventory
         for disposition.*
@@ -321,22 +296,16 @@ def intro_tab_function() -> None:
         - *Supported the ERP system transfer from AX Dynamics 2012 to D365
         as a lead supply chain SME and super user. Performed end-user testing to
         identify bugs for IT, ensured compliance to user requirements, and created
-        training scripts to enable operational deployment.*\n
-        
+        training scripts to enable operational deployment.*
         - *Pioneered the exploration of MRP I & II systems, including BOMs, routings, 
-        and resources to enable planned system enhancements.*\n
-                                         
+        and resources to enable planned system enhancements.*
         - *Assisted management's implementation of 5S practices and supported the
-        inventory, logistics, and receiving crews ad-hoc.*\n
-                                         
+        inventory, logistics, and receiving crews ad-hoc.*
         - *Designed the process for inbound/outbound logistics between Avid &
-        3PL warehouse.*\n
-                                         
+        3PL warehouse.*
         - *Generated leadership/QA endorsement of larger-scale process enhancements and
-        drove implementations through initial executions to ensure smooth deployment.*\n
-                                         
-        - *Pioneered the exploration and potential applications of Power BI software.*\n
-                                         
+        drove implementations through initial executions to ensure smooth deployment.*
+        - *Pioneered the exploration and potential applications of Power BI software.*
         - *Created a new procedure for the use of a walk-in -20°C freezer supporting
         readiness of the new storage space & safety of personnel.*
         
@@ -349,15 +318,15 @@ def intro_tab_function() -> None:
         avbio_clerk_container.subheader(":primary[Avid Bioservices] - *Supply Chain Clerk*", anchor=False)
         avbio_clerk_container.markdown(apply_time_duration_formating_for_job_roles(avbio_clerk_start, avbio_clerk_end))
         avbio_clerk_container.markdown("""
-        - *Issued & optimized stock for replenishment inventory.*\n
-        - *Issued materials to MFG for core processes.*\n
-        - *Performed general warehouse management operations such as re-optimizations of storage space and weekly sweeps/walkthroughs.*\n
-        - *Responded to 24-hour emergency call-outs for equipment alarms or materials-requests.*\n
-        - *Regularly investigated, cycle counted, & reconciled inventory.*\n
-        - *Escalated ad-hoc materials shortages as needed including requriements for urgent quarantine release.*\n
-        - *Performed manual GMP temperature monitoring activities every week.*\n
-        - *Aided audits when documentation was requested.*\n
-        - *Operated various forklifts as needed.*\n
+        - *Issued & optimized stock for replenishment inventory.*
+        - *Issued materials to MFG for core processes.*
+        - *Performed general warehouse management operations such as re-optimizations of storage space and weekly sweeps/walkthroughs.*
+        - *Responded to 24-hour emergency call-outs for equipment alarms or materials-requests.*
+        - *Regularly investigated, cycle counted, & reconciled inventory.*
+        - *Escalated ad-hoc materials shortages as needed including requirements for urgent quarantine release.*
+        - *Performed manual GMP temperature monitoring activities every week.*
+        - *Aided audits when documentation was requested.*
+        - *Operated various forklifts as needed.*
                                        
         """)
 

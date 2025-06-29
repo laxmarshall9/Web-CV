@@ -25,7 +25,7 @@ def main_func() -> None:
 
     # Create tabs and link each to their respective function
     all_pages: StreamlitPage = streamlit.navigation([
-        streamlit.Page(introduction, title="Introduction"), 
+        streamlit.Page(introduction, title="Overview"), 
         streamlit.Page(professional_history, title="Career Timeline")])
 
     all_pages.run()
