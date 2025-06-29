@@ -244,8 +244,8 @@ def intro_tab_function() -> None:
         - *Built a template for automating and standardizing
         status-updates on materials readiness, enabling near real-time report-outs and reducing
         manual preparations by roughly 2 hours per materials readiness meeting per week.*
-        - *Miscellaneous accomplishments: (1) received a spotlight award for dedication to clients; (2) idenitified $1.7M of SLOB
-        inventory for disposition; (3) further-automated manual routine activites via python-code to perform
+        - *Miscellaneous accomplishments: (1) received a spotlight award for dedication to clients; (2) identified  $1.7M of SLOB
+        inventory for disposition; (3) further-automated manual routine activities via python-code to perform
         automated data-refreshes and mass-analytics by SKU which support both high-level materials oversight and SKU-level evaluations.*
                                                 
         """)
