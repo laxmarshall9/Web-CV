@@ -130,7 +130,7 @@ def intro_tab_function() -> None:
         )
         
         tab1_container1.markdown(
-            """ - *I hope you enjoy this app! Please let me know if there are any features or pages I could add which would improve your experience or provide you some added utility. Your input is highly valued and appreciated.*"""
+            """ - *I hope you enjoy this app! Please let me know if there are any features or pages I could add which would improve your experience or provide additional convenience. Your input is highly valued and appreciated.*"""
         )
 
         #-------------------------------------------------------
