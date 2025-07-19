@@ -6,27 +6,42 @@ from streamlit.web import cli as stcli
 from streamlit.navigation.page import StreamlitPage
 from streamlit_timeline import timeline
 from Intro_tab.intro_tab import intro_tab_function as intro_tab_func
+from Sample_dashboard.dashboard_tab import dashboard_tab_function as dashboard_tab_func
+from Data_upload.upload_tab import upload_tab_function as upload_tab_func
 
 def main_func() -> None:
     # Reduce left and right margins of the page
     streamlit.set_page_config(layout="wide")
-    streamlit.title("James Marshall, CSCP", anchor = False)
+    def display_name() -> None:
+        streamlit.title("James Marshall, CSCP", anchor = False)
 
     def introduction() -> None:
+        display_name()
         intro_tab_func()
 
-    def professional_history() -> None:        
+    def professional_history() -> None:     
+        display_name()
         # get data
         with open('resume_source.json', "r") as file:
             data: str = file.read()
 
         # render timeline
         timeline(data, height=600)
+    
+    def dashboard() -> None:
+        dashboard_tab_func()
+
+    def data_uploader() -> None:
+        upload_tab_func()
 
     # Create tabs and link each to their respective function
     all_pages: StreamlitPage = streamlit.navigation([
         streamlit.Page(introduction, title="Overview"), 
-        streamlit.Page(professional_history, title="Career Timeline")])
+        streamlit.Page(professional_history, title="Career Timeline"),
+        # streamlit.Page(dashboard, title="Sample Dashboard"),
+        # streamlit.Page(data_uploader, title="Data uploader"),
+
+    ])
 
     all_pages.run()
 
@@ -67,7 +82,10 @@ def main_func() -> None:
         font=dict(   # For the integer values within the bar chart
             family="Tahoma",
             size=12
-        )
+        ),
+        margin=dict(
+            t=20,
+        ),
 
         )
 
