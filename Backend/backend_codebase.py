@@ -55,6 +55,8 @@ class Material_SKU():
         self.avg_remaining_shelf_life_of_prod_when_sold: float|None
         self.stock_expiry_is_a_high_risk: bool|None
         self.total_profit_contribution_in_period: int
+        self.total_revenue_by_sku: float
+        self.pretax_profit_margin_as_percentage: float
 
     """
 
@@ -101,6 +103,8 @@ class Material_SKU():
         avg_remaining_shelf_life_of_prod_when_sold:float|None.{self.avg_remaining_shelf_life_of_prod_when_sold}\n
         stock_expiry_is_a_high_risk: bool|None................{self.stock_expiry_is_a_high_risk}\n
         total_profit_contribution_in_period: int..............{self.total_profit_contribution_in_period}\n
+        total_revenue_by_sku: float...........................{self.total_revenue_by_sku}\n
+        pretax_profit_margin_as_percentage: float.............{self.pretax_profit_margin_as_percentage}\n
 
         """
         return attrs
@@ -120,6 +124,9 @@ class Material_SKU():
             "Is Hazardous?":  self.is_hazardous,
             "Inventory Turnover Ratio": self.inv_turnover_ratio,
             "High Risk of Stock Expiry": self.stock_expiry_is_a_high_risk,
+            "Total Revenue by SKU in Period": self.total_revenue_by_sku,
+            "Total Profit by SKU in Period": self.total_profit_contribution_in_period,
+            "Profit Margin by SKU as Percentage": self.pretax_profit_margin_as_percentage,
 
         }
         return dict_of_kpis
@@ -206,6 +213,8 @@ class Material_SKU():
             self.sales_price_per_unit: float
             self.break_even_point_in_units_for_holding_inventory: float
             self.total_profit_contribution_in_period: int
+            self.total_revenue_by_sku: float
+            self.pretax_profit_margin_as_percentage: float
               
         """
         # Filter report
@@ -227,6 +236,8 @@ class Material_SKU():
             self.sales_price_per_unit: float = 0
             self.break_even_point_in_units_for_holding_inventory: float = 0
             self.total_profit_contribution_in_period: int = 0
+            self.total_revenue_by_sku: float = 0
+            self.pretax_profit_margin_as_percentage: float = 0
         else:
             # Extract data from report
             self.beginning_inv_value: float = set(filtered_inv_dataframe["Total Value - Opening Stock (USD)"]).pop()
@@ -247,10 +258,12 @@ class Material_SKU():
             
             self.avg_monthly_holding_cost_of_inv: float = round(self.avg_cubic_feet_utilized_in_period * cost_per_cubic_ft_of_inv_per_month)
             self.sales_price_per_unit: float = self.inv_value_per_unit * 1.35  # 20% markup + 15% overhead
+            self.total_revenue_by_sku: float = round(self.units_sold_in_period * self.sales_price_per_unit, 2)
             self.contribution_per_unit_in_dollars: float = round(self.sales_price_per_unit  - self.inv_value_per_unit, 2)
             self.break_even_point_in_units_for_holding_inventory: float = round(self.avg_monthly_holding_cost_of_inv / self.contribution_per_unit_in_dollars, 2)
             self.units_sold_over_break_even: float = self.units_sold_in_period - self.break_even_point_in_units_for_holding_inventory
             self.total_profit_contribution_in_period: int = round(self.units_sold_over_break_even * self.contribution_per_unit_in_dollars)
+            self.pretax_profit_margin_as_percentage: float = round((self.total_profit_contribution_in_period / self.total_revenue_by_sku) * 100, 2)
 
 
     def get_inv_turnover(self) -> None:

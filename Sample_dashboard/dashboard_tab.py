@@ -93,21 +93,62 @@ def dashboard_tab_function() -> None:
             dict_of_kpis: dict = material_sku.get_KPIs_attrs()
             yield dict_of_kpis
 
+    def create_pie_charts_for_metrics(
+            name_of_ordered_elements: list,
+            values_of_ordered_elements: list,
+            title_of_graph: str,
+            color_map: dict,
+        ) -> Figure:
+        data: dict =  {
+            "Names": name_of_ordered_elements,
+            "values": values_of_ordered_elements,
+        }
+        dataframe: pandas.DataFrame = pandas.DataFrame(data)
+        
+        # Create pie chart
+        figure: Figure = pxs.pie(
+            dataframe,
+            names="Names",
+            values="values",
+            hole=0.5,  # Optional: creates a donut-style chart
+            color="Names",  # This tells Plotly to use the color map
+            color_discrete_map=color_map,
 
+        )
+        
+        # Stylize
+        figure.update_traces(
+            # textposition="inside", 
+            textinfo="percent+label",
+        )
+        
+        # Stylize more
+        figure.update_layout(
+            showlegend=False,
+            margin=dict(t=60, b=40, l=20, r=20),  # top, bottom, left, right
+            title = {
+                "text": title_of_graph,
+                "x": 0.5, # center title
+                "xanchor": "center", # anchor the title at its center
 
+            },
+            )
+
+        return figure
 
 
     #-------------------------------------------------------
     # User Interface
     #-------------------------------------------------------
-    streamlit.title("Planning Dashboard", anchor=False)
+    streamlit.title("Inventory Planning Performance Dashboard", anchor=False)
 
-    overview_tab, sku_tab = streamlit.tabs(["KPI Oversight","Plan Performance by SKU"])
+    overview_tab, sku_tab = streamlit.tabs(["KPI Oversight - Prior Month","Plan Performance by SKU - Prior Month"])
 
     with overview_tab:
         overview_tab_row_1_column_1, overview_tab_row_1_column_2, overview_tab_row_1_column_3 = streamlit.columns([1,1,1])
         overview_tab_row_2_column_1, overview_tab_row_2_column_2, overview_tab_row_2_column_3 = streamlit.columns([1,1,1])
-        overview_tab_row_3_column_1, overview_tab_row_3_column_2, overview_tab_row_3_column_3 = streamlit.columns([1,1,1])
+        overview_tab_row_3_column_1, overview_tab_row_3_column_2,overview_tab_row_3_column_3 = streamlit.columns([1,100,1])
+        overview_tab_row_4_column_1, overview_tab_row_4_column_2, overview_tab_row_4_column_3 = streamlit.columns([1,1,1])
 
         if overview_tab_row_1_column_3.button("Recalculate KPIs"):
             set_of_all_skus:set = set(mdm_report["Product ID"])
@@ -120,8 +161,129 @@ def dashboard_tab_function() -> None:
         if kpi_dashboard_source_data.empty:
             overview_tab_row_1_column_3.info("Click me! :point_up_2:")
         else:    
+            number_of_rows_in_data: int = len(kpi_dashboard_source_data.index)
+            dataframe_of_haz_materials: pandas.DataFrame = kpi_dashboard_source_data.loc[kpi_dashboard_source_data["Is Hazardous?"] == True]
+            sum_turnover: float = kpi_dashboard_source_data["Inventory Turnover Ratio"].sum()
+            avg_inventory_turnover: float = round(sum_turnover / number_of_rows_in_data, 2)
+            total_profit_in_period: float = round(kpi_dashboard_source_data["Profit Contribution During the Period"].sum(), 2)
+            total_revenue_in_period: float = round(kpi_dashboard_source_data["Total Revenue by SKU in Period"].sum(), 2)
+            pre_tax_profit_margin_in_period_as_percentage: float = round((total_profit_in_period / total_revenue_in_period) * 100, 2)
+            with overview_tab_row_1_column_1.container(border=True):
+                streamlit.subheader(f"Inventory Turnover Ratio: :green[{avg_inventory_turnover} turns per year]", anchor=False)
+            with overview_tab_row_1_column_2.container(border=True):
+                streamlit.subheader(f"Total Profit (Pre-tax): :green[${total_profit_in_period:,}] (Margin: :green[{pre_tax_profit_margin_in_period_as_percentage}%])", anchor=False)
+
+            with overview_tab_row_2_column_1.container(border=True):
+                number_of_hazardous_materials: int = len(dataframe_of_haz_materials.index)
+                number_of_nonhazardous_materials: int = number_of_rows_in_data - number_of_hazardous_materials
+                name_of_ordered_haz_elements: list = ["Non-Hazardous Materials", "Hazardous Materials"]
+                values_of_ordered_haz_elements: list = [number_of_nonhazardous_materials, number_of_hazardous_materials]
+                color_map_of_haz_elements: dict = {
+                    "Non-Hazardous Materials": "#575757",
+                    "Hazardous Materials": "#E2E2E2"
+                }
+                haz_figure_for_plotting: Figure = create_pie_charts_for_metrics(
+                    name_of_ordered_haz_elements,
+                    values_of_ordered_haz_elements,
+                    "Hazardous vs Non-Hazardous",
+                    color_map_of_haz_elements
+                )
+                streamlit.plotly_chart(haz_figure_for_plotting, use_container_width=True)
+            with overview_tab_row_2_column_2.container(border=True):
+                total_cubic_feet_utilized: float = round(kpi_dashboard_source_data["AVG Cubic Feet Utilized During the Period"].sum(), 3)
+                cubic_feet_utilized_for_haz_materials: float = round(dataframe_of_haz_materials["AVG Cubic Feet Utilized During the Period"].sum(), 1)
+                cubic_feet_utilized_for_nonhaz_materials: float = round(total_cubic_feet_utilized - cubic_feet_utilized_for_haz_materials, 1)
+                name_of_ordered_haz_storage_elements: list = ["Cubic Feet Non-Hazardous Storage", "Cubic Feet Hazardous Storage"]
+                values_of_ordered_haz_storage_elements: list = [cubic_feet_utilized_for_nonhaz_materials, cubic_feet_utilized_for_haz_materials]
+                color_map_of_haz_storage_elements: dict = {
+                    "Cubic Feet Non-Hazardous Storage": "#575757",
+                    "Cubic Feet Hazardous Storage": "#E2E2E2"
+                }
+                haz_storage_figure_for_plotting: Figure = create_pie_charts_for_metrics(
+                    name_of_ordered_haz_storage_elements,
+                    values_of_ordered_haz_storage_elements,
+                    "Cubic Feet of Hazardous Storage",
+                    color_map_of_haz_storage_elements
+                )
+                streamlit.plotly_chart(haz_storage_figure_for_plotting, use_container_width=True)
+            with overview_tab_row_2_column_3.container(border=True):
+                number_of_materials_at_risk_of_expiry: int = len(kpi_dashboard_source_data.loc[kpi_dashboard_source_data["High Risk of Stock Expiry"] == True].index)
+                number_of_materials_not_at_risk_of_expiry: int = number_of_rows_in_data - number_of_materials_at_risk_of_expiry
+                name_of_ordered_expiry_elements: list = ["Non-expiring Materials", "Expiring Materials"]
+                values_of_ordered_expiry_elements: list = [number_of_materials_not_at_risk_of_expiry, number_of_materials_at_risk_of_expiry]
+                color_map_of_expiry_elements: dict = {
+                    "Non-expiring Materials": "#575757",
+                    "Expiring Materials": "#E2E2E2"
+                }
+                expiry_figure_for_plotting: Figure = create_pie_charts_for_metrics(
+                    name_of_ordered_expiry_elements,
+                    values_of_ordered_expiry_elements,
+                    "Materials at Risk of Expiry",
+                    color_map_of_expiry_elements
+                )
+                streamlit.plotly_chart(expiry_figure_for_plotting, use_container_width=True)
+            with overview_tab_row_3_column_2.container(border=True):
+                streamlit.markdown("<p style='text-align: center; color: orange; font-size: 36px; font-weight: bold;'> Materials Spotlight </p>", unsafe_allow_html=True)
+            with overview_tab_row_4_column_1.container(border=True):
+                streamlit.markdown("<p style='text-align: center; color: #009C0D; font-size: 28px; font-weight: bold;'> Top Performers </p>", unsafe_allow_html=True)
+                #----------------------------------------
+                # HIGHEST NOMINAL PROFIT
+                #----------------------------------------
+                highest_nominal_profit: int = kpi_dashboard_source_data["Profit Contribution During the Period"].max()
+                df_for_highest_nom_profit: pandas.DataFrame = kpi_dashboard_source_data.loc[kpi_dashboard_source_data["Profit Contribution During the Period"] == highest_nominal_profit]
+                prod_descr_of_highest_nom_prof: str = set(df_for_highest_nom_profit["Material Description"]).pop()
+                prod_id_of_highest_nom_prof: str = set(df_for_highest_nom_profit["Material ID"]).pop()
+                #----------------------------------------
+                # HIGHEST (PRETAX) PROFIT MARGIN
+                #----------------------------------------
+                highest_profit_margin: int = kpi_dashboard_source_data["Profit Margin by SKU as Percentage"].max()
+                df_for_highest_profit_margin: pandas.DataFrame = kpi_dashboard_source_data.loc[kpi_dashboard_source_data["Profit Margin by SKU as Percentage"] == highest_profit_margin]
+                prod_descr_of_highest_prof_margin: str = set(df_for_highest_profit_margin["Material Description"]).pop()
+                prod_id_of_highest_prof_margin: str = set(df_for_highest_profit_margin["Material ID"]).pop()
+                #----------------------------------------
+                # HIGHEST INVENTORY TURNOVER (i.e. FASTEST MOVER)
+                #----------------------------------------
+                highest_inv_turnover: int = kpi_dashboard_source_data["Inventory Turnover Ratio"].max()
+                df_for_highest_inv_turnover: pandas.DataFrame = kpi_dashboard_source_data.loc[kpi_dashboard_source_data["Inventory Turnover Ratio"] == highest_inv_turnover]
+                prod_descr_of_highest_inv_turnover: str = set(df_for_highest_inv_turnover["Material Description"]).pop()
+                prod_id_of_highest_inv_turnover: str = set(df_for_highest_inv_turnover["Material ID"]).pop()
+
+                streamlit.markdown(f"**HIGHEST NOMINAL PROFIT: (:blue[{prod_id_of_highest_nom_prof}]) :blue[{prod_descr_of_highest_nom_prof}] (:orange[${highest_nominal_profit}])**")
+                streamlit.markdown(f"**HIGHEST (PRETAX) PROFIT MARGIN:  (:blue[{prod_id_of_highest_prof_margin}]) :blue[{prod_descr_of_highest_prof_margin}] (:orange[{highest_profit_margin}%])**")
+                streamlit.markdown(f"**FASTEST MOVER: (:blue[{prod_id_of_highest_inv_turnover}]) :blue[{prod_descr_of_highest_inv_turnover}] (Rate of :orange[{highest_inv_turnover} turns per year])**")
             
-            
+            with overview_tab_row_4_column_2.container(border=True):
+                streamlit.markdown("<p style='text-align: center; font-size: 28px;'> Recommended for Promotion </p>", unsafe_allow_html=True)
+
+            with overview_tab_row_4_column_3.container(border=True):
+                streamlit.markdown("<p style='text-align: center; color: #CCC92B; font-size: 28px; font-weight: bold;'> Lowest Performers </p>", unsafe_allow_html=True)
+                #----------------------------------------
+                # LOWEST NOMINAL PROFIT
+                #----------------------------------------
+                lowest_nominal_profit: int = kpi_dashboard_source_data["Profit Contribution During the Period"].min()
+                df_for_lowest_nom_profit: pandas.DataFrame = kpi_dashboard_source_data.loc[kpi_dashboard_source_data["Profit Contribution During the Period"] == lowest_nominal_profit]
+                prod_descr_of_lowest_nom_prof: str = set(df_for_lowest_nom_profit["Material Description"]).pop()
+                prod_id_of_lowest_nom_prof: str = set(df_for_lowest_nom_profit["Material ID"]).pop()
+                #----------------------------------------
+                # LOWEST (PRETAX) PROFIT MARGIN
+                #----------------------------------------
+                lowest_profit_margin: int = kpi_dashboard_source_data["Profit Margin by SKU as Percentage"].min()
+                df_for_lowest_profit_margin: pandas.DataFrame = kpi_dashboard_source_data.loc[kpi_dashboard_source_data["Profit Margin by SKU as Percentage"] == lowest_profit_margin]
+                prod_descr_of_lowest_prof_margin: str = set(df_for_lowest_profit_margin["Material Description"]).pop()
+                prod_id_of_lowest_prof_margin: str = set(df_for_lowest_profit_margin["Material ID"]).pop()
+                #----------------------------------------
+                # LOWEST INVENTORY TURNOVER (i.e. FASTEST MOVER)
+                #----------------------------------------
+                lowest_inv_turnover: int = kpi_dashboard_source_data["Inventory Turnover Ratio"].min()
+                df_for_lowest_inv_turnover: pandas.DataFrame = kpi_dashboard_source_data.loc[kpi_dashboard_source_data["Inventory Turnover Ratio"] == lowest_inv_turnover]
+                prod_descr_of_lowest_inv_turnover: str = set(df_for_lowest_inv_turnover["Material Description"]).pop()
+                prod_id_of_lowest_inv_turnover: str = set(df_for_lowest_inv_turnover["Material ID"]).pop()
+
+                streamlit.markdown(f"**LOWEST NOMINAL PROFIT: (:blue[{prod_id_of_lowest_nom_prof}]) :blue[{prod_descr_of_lowest_nom_prof}] (:orange[${lowest_nominal_profit}])**")
+                streamlit.markdown(f"**LOWEST (PRETAX) PROFIT MARGIN:  (:blue[{prod_id_of_lowest_prof_margin}]) :blue[{prod_descr_of_lowest_prof_margin}] (:orange[{lowest_profit_margin}%])**")
+                streamlit.markdown(f"**FASTEST MOVER: (:blue[{prod_id_of_lowest_inv_turnover}]) :blue[{prod_descr_of_lowest_inv_turnover}] (Rate of :orange[{lowest_inv_turnover} turns per year])**")
+            with streamlit.container(border=True):
+                streamlit.markdown("<p style='text-align: center; color: orange; font-size: 36px; font-weight: bold;'> Raw KPI Data </p>", unsafe_allow_html=True)
             streamlit.dataframe(kpi_dashboard_source_data)
 
 
@@ -194,5 +356,6 @@ def dashboard_tab_function() -> None:
                     if sku_classed.stock_expiry_is_a_high_risk:
                         streamlit.info("**Promotion is recommended due to aging inventory**")
                     streamlit.subheader(f"Total Profit Contribution Last Month: :orange[${sku_classed.total_profit_contribution_in_period}]", anchor=False)
+                    streamlit.subheader(f"Pre-tax margin: :orange[{sku_classed.pretax_profit_margin_as_percentage}%]")
 
 
