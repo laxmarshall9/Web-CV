@@ -118,14 +118,14 @@ class Material_SKU():
             "Material ID": self.sku,
             "Material Description": self.material_description,
             "Break-Even against Holding costs (in units)": self.break_even_point_in_units_for_holding_inventory,
-            "Profit Contribution During the Period": self.total_profit_contribution_in_period,
+            "Profit Contribution During the Period ($)": self.total_profit_contribution_in_period,
             "AVG Cubic Feet Utilized During the Period":  self.avg_cubic_feet_utilized_in_period,
-            "(Averaged) Holding Cost of Inventory During the Period": self.avg_monthly_holding_cost_of_inv,
+            "(Averaged) Holding Cost of Inventory During the Period ($)": self.avg_monthly_holding_cost_of_inv,
             "Is Hazardous?":  self.is_hazardous,
             "Inventory Turnover Ratio": self.inv_turnover_ratio,
             "High Risk of Stock Expiry": self.stock_expiry_is_a_high_risk,
-            "Total Revenue by SKU in Period": self.total_revenue_by_sku,
-            "Total Profit by SKU in Period": self.total_profit_contribution_in_period,
+            "Total Revenue by SKU in Period ($)": self.total_revenue_by_sku,
+            "Total Profit by SKU in Period ($)": self.total_profit_contribution_in_period,
             "Profit Margin by SKU as Percentage": self.pretax_profit_margin_as_percentage,
 
         }

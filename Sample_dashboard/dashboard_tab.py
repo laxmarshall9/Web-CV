@@ -165,8 +165,8 @@ def dashboard_tab_function() -> None:
             dataframe_of_haz_materials: pandas.DataFrame = kpi_dashboard_source_data.loc[kpi_dashboard_source_data["Is Hazardous?"] == True]
             sum_turnover: float = kpi_dashboard_source_data["Inventory Turnover Ratio"].sum()
             avg_inventory_turnover: float = round(sum_turnover / number_of_rows_in_data, 2)
-            total_profit_in_period: float = round(kpi_dashboard_source_data["Profit Contribution During the Period"].sum(), 2)
-            total_revenue_in_period: float = round(kpi_dashboard_source_data["Total Revenue by SKU in Period"].sum(), 2)
+            total_profit_in_period: float = round(kpi_dashboard_source_data["Profit Contribution During the Period ($)"].sum(), 2)
+            total_revenue_in_period: float = round(kpi_dashboard_source_data["Total Revenue by SKU in Period ($)"].sum(), 2)
             pre_tax_profit_margin_in_period_as_percentage: float = round((total_profit_in_period / total_revenue_in_period) * 100, 2)
             with overview_tab_row_1_column_1.container(border=True):
                 streamlit.subheader(f"Inventory Turnover Ratio: :green[{avg_inventory_turnover} turns per year]", anchor=False)
@@ -229,8 +229,8 @@ def dashboard_tab_function() -> None:
                 #----------------------------------------
                 # HIGHEST NOMINAL PROFIT
                 #----------------------------------------
-                highest_nominal_profit: int = kpi_dashboard_source_data["Profit Contribution During the Period"].max()
-                df_for_highest_nom_profit: pandas.DataFrame = kpi_dashboard_source_data.loc[kpi_dashboard_source_data["Profit Contribution During the Period"] == highest_nominal_profit]
+                highest_nominal_profit: int = kpi_dashboard_source_data["Profit Contribution During the Period ($)"].max()
+                df_for_highest_nom_profit: pandas.DataFrame = kpi_dashboard_source_data.loc[kpi_dashboard_source_data["Profit Contribution During the Period ($)"] == highest_nominal_profit]
                 prod_descr_of_highest_nom_prof: str = set(df_for_highest_nom_profit["Material Description"]).pop()
                 prod_id_of_highest_nom_prof: str = set(df_for_highest_nom_profit["Material ID"]).pop()
                 #----------------------------------------
@@ -254,14 +254,19 @@ def dashboard_tab_function() -> None:
             
             with overview_tab_row_4_column_2.container(border=True):
                 streamlit.markdown("<p style='text-align: center; font-size: 28px;'> Recommended for Promotion </p>", unsafe_allow_html=True)
+                dataframe_of_promo_recommendations: pandas.DataFrame = kpi_dashboard_source_data.loc[kpi_dashboard_source_data["High Risk of Stock Expiry"] == True]
+                parts_recommended_for_promo: tuple = tuple(dataframe_of_promo_recommendations["Material ID"])
+                descriptions_of_parts_recommended_for_promo: tuple = tuple(dataframe_of_promo_recommendations["Material Description"])
+                for index in range(len(parts_recommended_for_promo)):
+                    streamlit.markdown(f"<p style='text-align: center; font-size: 20px;'> ({parts_recommended_for_promo[index]}) {descriptions_of_parts_recommended_for_promo[index]} </p>", unsafe_allow_html=True)
 
             with overview_tab_row_4_column_3.container(border=True):
                 streamlit.markdown("<p style='text-align: center; color: #CCC92B; font-size: 28px; font-weight: bold;'> Lowest Performers </p>", unsafe_allow_html=True)
                 #----------------------------------------
                 # LOWEST NOMINAL PROFIT
                 #----------------------------------------
-                lowest_nominal_profit: int = kpi_dashboard_source_data["Profit Contribution During the Period"].min()
-                df_for_lowest_nom_profit: pandas.DataFrame = kpi_dashboard_source_data.loc[kpi_dashboard_source_data["Profit Contribution During the Period"] == lowest_nominal_profit]
+                lowest_nominal_profit: int = kpi_dashboard_source_data["Profit Contribution During the Period ($)"].min()
+                df_for_lowest_nom_profit: pandas.DataFrame = kpi_dashboard_source_data.loc[kpi_dashboard_source_data["Profit Contribution During the Period ($)"] == lowest_nominal_profit]
                 prod_descr_of_lowest_nom_prof: str = set(df_for_lowest_nom_profit["Material Description"]).pop()
                 prod_id_of_lowest_nom_prof: str = set(df_for_lowest_nom_profit["Material ID"]).pop()
                 #----------------------------------------
@@ -281,7 +286,7 @@ def dashboard_tab_function() -> None:
 
                 streamlit.markdown(f"**LOWEST NOMINAL PROFIT: (:blue[{prod_id_of_lowest_nom_prof}]) :blue[{prod_descr_of_lowest_nom_prof}] (:orange[${lowest_nominal_profit}])**")
                 streamlit.markdown(f"**LOWEST (PRETAX) PROFIT MARGIN:  (:blue[{prod_id_of_lowest_prof_margin}]) :blue[{prod_descr_of_lowest_prof_margin}] (:orange[{lowest_profit_margin}%])**")
-                streamlit.markdown(f"**FASTEST MOVER: (:blue[{prod_id_of_lowest_inv_turnover}]) :blue[{prod_descr_of_lowest_inv_turnover}] (Rate of :orange[{lowest_inv_turnover} turns per year])**")
+                streamlit.markdown(f"**SLOWEST MOVER: (:blue[{prod_id_of_lowest_inv_turnover}]) :blue[{prod_descr_of_lowest_inv_turnover}] (Rate of :orange[{lowest_inv_turnover} turns per year])**")
             with streamlit.container(border=True):
                 streamlit.markdown("<p style='text-align: center; color: orange; font-size: 36px; font-weight: bold;'> Raw KPI Data </p>", unsafe_allow_html=True)
             streamlit.dataframe(kpi_dashboard_source_data)

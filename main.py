@@ -38,7 +38,7 @@ def main_func() -> None:
     all_pages: StreamlitPage = streamlit.navigation([
         streamlit.Page(introduction, title="Overview"), 
         streamlit.Page(professional_history, title="Career Timeline"),
-        # streamlit.Page(dashboard, title="Sample Dashboard"),
+        streamlit.Page(dashboard, title="Sample Dashboard"),
         # streamlit.Page(data_uploader, title="Data uploader"),
 
     ])
