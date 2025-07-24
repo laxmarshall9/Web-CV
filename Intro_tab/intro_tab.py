@@ -215,7 +215,7 @@ def intro_tab_function() -> None:
         total_work_experience_in_days: int = time_work_experience.days + time_internship_experience.days
         total_work_experience_in_years: float = round(total_work_experience_in_days / 365.2422, 1)
 
-        total_years_experience_container.markdown(f"<p style='color:#7370FF; font-family:Arial; font-size: 18px;'>Total Experience: {total_work_experience_in_years} in years</p>", unsafe_allow_html=True)
+        total_years_experience_container.markdown(f"<p style='color:#9997FF; font-family:Arial; font-size: 18px;'><em>Total Experience: {total_work_experience_in_years} in years</em></p>", unsafe_allow_html=True)
 
         #-------------------------------------------------------
         # SKPT - Planner II
@@ -397,7 +397,7 @@ def intro_tab_function() -> None:
         
         tab3_container1: DeltaGenerator = streamlit.container(border=False)
         tab3_container1.subheader(":primary[University of California, Riverside]", anchor=False)
-        tab3_container1.markdown("<p style='color:#7370FF; font-family:Arial; font-size: 18px;'>Bachelor of Science, Business Administration & Management</p>", unsafe_allow_html=True)
+        tab3_container1.markdown("<p style='color:#9997FF; font-family:Arial; font-size: 18px;'><em>Bachelor of Science, Business Administration & Management</em></p>", unsafe_allow_html=True)
         tab3_container1.markdown(f":blue[*{apply_time_duration_formating_for_job_roles(University_start, University_end)}*]")
         tab3_container1.markdown("- Earned Distinctions: :primary[**Dean's Honor List & Chancellor's Honor List**]")
         tab3_container1.markdown("""
