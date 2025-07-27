@@ -157,7 +157,7 @@ def dashboard_tab_function() -> None:
             # Store locally
             with shelve.open("shelved_sample_data") as db:
                 db["kpi_dataframe"] = kpi_dataframe
-            streamlit.success("Calculations are complete. Please reload the page.")
+            overview_tab_row_1_column_3.success("Calculations are complete. Please reload the page.")
         if kpi_dashboard_source_data.empty:
             overview_tab_row_1_column_3.info("Click me! :point_up_2:")
         else:    
