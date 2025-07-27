@@ -48,13 +48,17 @@ def main_func() -> None:
     #-----------------------------------------------------------------------------------------
 
     skills: list[str] = ["Data Analysis", "Excel", "ERP Systems", "Python", "E2E Supply Chain" ]
-    proficiency: list[int] = [90, 90, 80, 65, 80]
+    proficiency: list[int] = [90, 90, 80, 70, 80]
+    colors_in_bar_chart: list[str] = ["#7376AD", "#5B5FA0", "#434891", "#2c317c", "#1d236d"]
 
     figure: Figure = pxs.bar(
         x=proficiency, y=skills, orientation="h",
         labels={"x": "Proficiency (%)", "y": ""},
-        text=proficiency, color=proficiency,
-        color_continuous_scale="ice" # color options -> https://plotly.com/python/builtin-colorscales/
+        text=proficiency, 
+        color=colors_in_bar_chart,
+        color_discrete_sequence=colors_in_bar_chart
+
+        # color_continuous_scale="ice" # color options -> https://plotly.com/python/builtin-colorscales/
 
     )
     figure.update_layout( 
