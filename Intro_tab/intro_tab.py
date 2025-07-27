@@ -180,19 +180,16 @@ def intro_tab_function() -> None:
                 feedback_text: str = str(tab1_container2.text_input(prompts[user_feedback_rating], key="feedback_input"))
                 submit: bool = tab1_container2.button("Submit Feedback")
                 if submit:
-                    if feedback_text.strip(): # Ensure the contents are not just white-space
-                        try:
-                            feedback_entry: APIResponse[Dict[str, Any]] = supabase.table("feedback").insert({
-                                "Creation_timestamp": datetime.datetime.now().isoformat(),
-                                "Rating": rating,
-                                "Feedback": feedback_text.strip()
-                            }).execute()
+                    try:
+                        feedback_entry: APIResponse[Dict[str, Any]] = supabase.table("feedback").insert({
+                            "Creation_timestamp": datetime.datetime.now().isoformat(),
+                            "Rating": rating,
+                            "Feedback": feedback_text.strip()
+                        }).execute()
 
-                            tab1_container2.success("Thank you! Your feedback has been submitted. ")
-                        except:
-                            tab1_container2.error(f"Sorry, it's not you--it's me. There was an error when submitting your feedback.")
-                    else:
-                        streamlit.warning("Oops, that didn't work. Please enter your feedback and try re-submitting.")
+                        tab1_container2.success("Thank you! Your feedback has been submitted. ")
+                    except:
+                        tab1_container2.error(f"Sorry, it's not you--it's me. There was an error when submitting your feedback.")
     
     
     with tab2:
