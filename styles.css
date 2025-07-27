@@ -1,0 +1,33 @@
+/* For styling: https://html-css-js.com/css/generator/font/ */
+
+.custom-normal-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #4c9fff;
+    font-weight: 400; /* 400 for normal or 700 for bold */
+    text-decoration: none;
+    font-style: italic; /* normal or italic */
+    font-variant: normal; /* normal or small-caps */
+    text-transform: none; /* none, uppercase, lowercase, or capitalize */
+    padding: 5px;
+    text-align: left;
+    margin-bottom: 15px;
+
+    /*
+    background-color: #F0F8FF; 
+    background-color: #000000c2; 
+    border-radius: 10px;
+    text-decoration-style: wavy;
+    text-decoration-color: #3cff00;
+    text-align: center;
+    line-height: 1;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+
+    */
+
+}
+

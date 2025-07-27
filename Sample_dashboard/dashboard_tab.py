@@ -8,7 +8,7 @@ import plotly.express as pxs
 def dashboard_tab_function() -> None:
 
     #-------------------------------------------------------
-    # Access shelved data
+    # Access shelved data and css styles
     #-------------------------------------------------------
 
     try:
@@ -25,6 +25,14 @@ def dashboard_tab_function() -> None:
         mdm_report: pandas.DataFrame = pandas.DataFrame()
         kpi_dashboard_source_data: pandas.DataFrame = pandas.DataFrame()
         data_as_of: str = ""
+
+    # Read CSS file
+    with open("styles.css") as file:
+        # get classes
+        css_styles: str = f"<style>{file.read()}</style>"
+        # inject classes into DOM of streamlit frontend
+        streamlit.markdown(css_styles, unsafe_allow_html=True)
+
 
     #-------------------------------------------------------
     # Functions
@@ -336,7 +344,7 @@ def dashboard_tab_function() -> None:
                         streamlit.markdown(f"**AVG Holding Cost of INV Per Month: :blue[${sku_classed.avg_monthly_holding_cost_of_inv}]**")
                 
                 with sku_tab_row_2_column_3.container(border=True):
-                    streamlit.subheader("*:green[Change Over Prior Month]*", anchor=False)
+                    streamlit.subheader("*:green[Change From Prior Month]*", anchor=False)
                     streamlit.markdown(f"**Net change in total stock level:** :blue[**{sku_classed.net_change_in_inv_qty_over_period} {sku_classed.inventory_uom}**]")
                     percentage_change_in_inv: float = round((sku_classed.net_change_in_inv_qty_over_period / sku_classed.beginning_inv_qty)* 100, 1)
                     if percentage_change_in_inv > 0:
