@@ -369,6 +369,6 @@ def dashboard_tab_function() -> None:
                     if sku_classed.stock_expiry_is_a_high_risk:
                         streamlit.info("**Promotion is recommended due to aging inventory**")
                     streamlit.subheader(f"Total Profit Contribution Last Month: :orange[${sku_classed.total_profit_contribution_in_period}]", anchor=False)
-                    streamlit.subheader(f"Pre-tax margin: :orange[{sku_classed.pretax_profit_margin_as_percentage}%]")
+                    streamlit.subheader(f"Pre-tax margin: :orange[{sku_classed.pretax_profit_margin_as_percentage}%]", anchor=False)
 
 
