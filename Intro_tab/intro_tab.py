@@ -1,6 +1,5 @@
-from gotrue.types import UserResponse
 from postgrest.base_request_builder import APIResponse
-import streamlit, datetime, json
+import streamlit, datetime
 from typing import Any, Dict
 from supabase import create_client
 from streamlit.delta_generator import DeltaGenerator
