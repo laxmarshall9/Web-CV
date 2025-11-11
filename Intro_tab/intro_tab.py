@@ -3,8 +3,10 @@ import streamlit, datetime
 from typing import Any, Dict
 from supabase import create_client
 from streamlit.delta_generator import DeltaGenerator
-from supabase._sync.client import SyncClient
-
+try:
+    from supabase._sync.client import SyncClient
+except ImportError:
+    pass
 
 def intro_tab_function() -> None:
     #-------------------------------------------------------
